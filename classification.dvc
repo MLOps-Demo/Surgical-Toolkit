@@ -1,0 +1,5 @@
+outs:
+- md5: 6217e32fa4fc72c4b99a1343f7f6da11.dir
+  size: 780459702
+  nfiles: 715
+  path: classification

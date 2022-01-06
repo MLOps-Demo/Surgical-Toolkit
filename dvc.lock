@@ -1,0 +1,70 @@
+schema: '2.0'
+stages:
+  data-split:
+    cmd: python src/data-prep.py
+    deps:
+    - path: classification/
+      md5: 6217e32fa4fc72c4b99a1343f7f6da11.dir
+      size: 780459702
+      nfiles: 715
+    - path: src/data-prep.py
+      md5: 2fb9125c080de45a4219f66efb0e4ad4
+      size: 1457
+    outs:
+    - path: data/test_data.npy
+      md5: 4dacbbb3fc5da29846e9278687e81b66
+      size: 236028032
+    - path: data/test_label.npy
+      md5: d8dcc40b297fe22ea74b27e75b9da838
+      size: 3264
+    - path: data/train_data.npy
+      md5: 51c8a2762026f5aad29a15f8ac87b72a
+      size: 169193600
+    - path: data/train_label.npy
+      md5: 88f128ed480a3af53452ad98a4ff2b0a
+      size: 2376
+    - path: data/val_data.npy
+      md5: 6ebde930abe45f9d45dd49e76356af48
+      size: 25288832
+    - path: data/val_label.npy
+      md5: 1a1c48c63c2f3f9c4035e2c312633b49
+      size: 464
+  training:
+    cmd: python src/train_model.py
+    deps:
+    - path: data/test_data.npy
+      md5: 4dacbbb3fc5da29846e9278687e81b66
+      size: 236028032
+    - path: data/test_label.npy
+      md5: d8dcc40b297fe22ea74b27e75b9da838
+      size: 3264
+    - path: data/train_data.npy
+      md5: 51c8a2762026f5aad29a15f8ac87b72a
+      size: 169193600
+    - path: data/train_label.npy
+      md5: 88f128ed480a3af53452ad98a4ff2b0a
+      size: 2376
+    - path: data/val_data.npy
+      md5: 6ebde930abe45f9d45dd49e76356af48
+      size: 25288832
+    - path: data/val_label.npy
+      md5: 1a1c48c63c2f3f9c4035e2c312633b49
+      size: 464
+    - path: src/train_model.py
+      md5: c0c32829327e56db193da6eda8e85114
+      size: 3203
+    params:
+      params.yaml:
+        training.base_lr: 1e-05
+        training.nb_epoch: 1
+        training.num_classes: 2
+    outs:
+    - path: accuracy.png
+      md5: 7efd0d5f0c8a3300a84e6c218bc01bdc
+      size: 25204
+    - path: loss.png
+      md5: 763e7615a53254fd7f6d49ff045f000a
+      size: 19263
+    - path: scores.json
+      md5: 6d124f3a47acb7d4996fd1e59ccaaceb
+      size: 61
