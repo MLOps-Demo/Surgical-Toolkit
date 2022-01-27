@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   run:
-    runs-on: [self-hosted, cml,gpu]
+    runs-on: [self-hosted,cml,gpu]
   
     steps:
       - uses: actions/checkout@v2
@@ -37,8 +37,7 @@ jobs:
           # Add figure to the report
           echo "## Validating results by region"
           dvc plots show
-           
-          
+            
           cml-publish auccuracy.png --md >> report.md
           cml-publish loss.png --md >> report.md
           
