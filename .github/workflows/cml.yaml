@@ -22,7 +22,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS }}
         run: |
-          source venv/bin/activate
           echo "VIRTUAL ENV:" $VIRTUAL_ENV
 
           pip install -r requirements.txt
