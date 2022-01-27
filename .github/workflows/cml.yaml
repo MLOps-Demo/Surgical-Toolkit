@@ -15,7 +15,7 @@ jobs:
 
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.7'
+          python-version: '3.7.12'
 
       - name: cml
         env:
@@ -24,8 +24,12 @@ jobs:
         run: |
           echo "VIRTUAL ENV:" $VIRTUAL_ENV
 
-          pip install -r requirements.txt
           
+          python3.8 -m venv env
+          source env/bin/activate
+          echo "VIRTUAL ENV:" $VIRTUAL_ENV
+
+          pip install -r requirements.txt
           # Pull latest data from remote
           dvc pull
           
