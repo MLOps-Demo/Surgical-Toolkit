@@ -27,7 +27,7 @@ jobs:
           # Pull latest data from remote.
           dvc pull
           
-          # Reproduce pipeline ifgit  any changes detected in dependencies
+          # Reproduce pipeline ifgit  any changes detected in dependencies.
           dvc repro 
           
           git fetch --prune --unshallow
