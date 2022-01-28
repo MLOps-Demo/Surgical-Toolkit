@@ -31,7 +31,8 @@ jobs:
           dvc repro 
           
           git fetch --prune --unshallow
-          # Add figure to the report
+          # Add figure to the report.
+          
           echo "## Validating results by region"
           dvc plots show
             
