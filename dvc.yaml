@@ -25,10 +25,7 @@ stages:
       - training.num_classes
       - training.nb_epoch
       - training.base_lr
-    outs:
-     
-      - loss.png      
-      - accuracy.png  
+    
     metrics:
       - scores.json:
           cache: false
