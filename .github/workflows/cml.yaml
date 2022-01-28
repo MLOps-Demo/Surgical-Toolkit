@@ -24,10 +24,10 @@ jobs:
         run: |
 
           pip install -r requirements.txt
-          # Pull latest data from remote
+          # Pull latest data from remote.
           dvc pull
           
-          # Reproduce pipeline if any changes detected in dependencies
+          # Reproduce pipeline ifgit  any changes detected in dependencies
           dvc repro 
           
           git fetch --prune --unshallow
