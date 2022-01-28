@@ -36,7 +36,7 @@ jobs:
           echo "## Validating results by region"
           dvc plots show
             
-          cml-publish auccuracy.png --md >> report.md
+          cml-publish accuracy.png --md >> report.md
           cml-publish loss.png --md >> report.md
           
           dvc metrics diff --show-md master >> report.md
