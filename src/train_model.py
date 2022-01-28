@@ -29,13 +29,15 @@ def model_def():
     model_vgg16_conv = VGG16(weights='imagenet', include_top=False)
 
     # Create your own input format
-    keras_input = Input(shape=img_shape, name='image_input', batch_size=64)
+    keras_input = Input(shape=img_shape, name='image_input')
 
     # Use the generated model
     output_vgg16_conv = model_vgg16_conv(keras_input)
 
     # Add the fully-connected layers
     x = Flatten(name='flatten')(output_vgg16_conv)
+    x = Dense(4096, activation='relu', name='fc1')(x)
+    x = Dense(1024, activation='relu', name='fc1')(x)
     x = Dense(128, activation='relu', name='fc1')(x)
     x = Dense(64, activation='relu', name='fc2')(x)
     x = Dense(num_classes, activation='softmax', name='predictions')(x)
