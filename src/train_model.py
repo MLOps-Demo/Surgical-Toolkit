@@ -29,7 +29,7 @@ def model_def():
     model_vgg16_conv = VGG16(weights='imagenet', include_top=False)
 
     # Create your own input format
-    keras_input = Input(shape=img_shape, name='image_input')
+    keras_input = Input(shape=img_shape, name='image_input', batch_size=64)
 
     # Use the generated model
     output_vgg16_conv = model_vgg16_conv(keras_input)
