@@ -7,7 +7,7 @@ from keras.engine.input_layer import Input
 import yaml
 import matplotlib.pyplot as plt
 import json
-
+from keras import optimizers
 
 params = yaml.safe_load(open("params.yaml"))["training"]
 img_shape = (224, 224, 3)
@@ -52,7 +52,8 @@ def schedule(epoch, decay=0.9):
 def train():
     model = model_def()
     print(model.summary())
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+    model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
     #.{epoch:02d}-{val_loss:.2f}
     callbacks = [keras.callbacks.ModelCheckpoint('saved-models/weights.h5',
                                                  verbose=1, save_best_only=True,
