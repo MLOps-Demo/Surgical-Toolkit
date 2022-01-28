@@ -37,9 +37,9 @@ def model_def():
     # Add the fully-connected layers
     x = Flatten(name='flatten')(output_vgg16_conv)
     x = Dense(4096, activation='relu', name='fc1')(x)
-    x = Dense(1024, activation='relu', name='fc1')(x)
-    x = Dense(128, activation='relu', name='fc1')(x)
-    x = Dense(64, activation='relu', name='fc2')(x)
+    x = Dense(1024, activation='relu', name='fc2')(x)
+    x = Dense(128, activation='relu', name='fc3')(x)
+    x = Dense(64, activation='relu', name='fc4')(x)
     x = Dense(num_classes, activation='softmax', name='predictions')(x)
 
     # Create your own model
